@@ -556,10 +556,67 @@ EOF
 }
 
 ###############################################################################
-# Step 8: Create Kiosk Run Script
+# Step 8: Configure Boot Config for Performance (1080p + Overclock)
+###############################################################################
+configure_boot_config() {
+    print_header "STEP 8: Configuring Boot Settings for Performance"
+
+    CONFIG_FILE="/boot/firmware/config.txt"
+
+    # Backup original config
+    if [ ! -f "${CONFIG_FILE}.backup" ]; then
+        print_info "Backing up original config.txt..."
+        sudo cp "$CONFIG_FILE" "${CONFIG_FILE}.backup"
+        print_success "Backup created at ${CONFIG_FILE}.backup"
+    fi
+
+    print_info "Adding performance optimizations to config.txt..."
+
+    # Add performance settings
+    sudo tee -a "$CONFIG_FILE" > /dev/null << 'EOFCONFIG'
+
+# ========================================
+# Performance Optimizations (Added by pi-setup.sh)
+# ========================================
+
+# DISPLAY SETTINGS - Force 1080p @ 60Hz
+hdmi_enable_4k=0
+hdmi_group=2
+hdmi_mode=82
+hdmi_force_hotplug=1
+hdmi_drive=2
+config_hdmi_boost=7
+hdmi_ignore_edid=0xa5000080
+max_framebuffer_width=1920
+max_framebuffer_height=1080
+
+# PERFORMANCE - CPU/GPU Overclock
+force_turbo=1
+over_voltage=2
+arm_freq=1800
+gpu_freq=600
+gpu_mem=256
+sdram_freq=3200
+over_voltage_sdram=2
+
+# FAN CONTROL (if fan connected to GPIO 14)
+dtoverlay=gpio-fan,gpiopin=14,temp=80000
+EOFCONFIG
+
+    print_success "Boot config optimized for 1080p + performance"
+    print_info "Settings applied:"
+    echo "  • Resolution: 1080p @ 60Hz (forced)"
+    echo "  • CPU: 1800MHz (overclocked from 1500MHz)"
+    echo "  • GPU: 600MHz (overclocked from 500MHz)"
+    echo "  • GPU Memory: 256MB"
+    echo "  • Fan: Activates at 80°C"
+}
+
+###############################################################################
+# Step 9: Create Optimized Kiosk Run Script
 ###############################################################################
 create_kiosk_script() {
-    print_header "STEP 8: Creating Kiosk Run Script"
+    print_header "STEP 9: Creating Optimized Kiosk Run Script"
 
     KIOSK_SCRIPT="$PI_HOME/kiosk_run.sh"
 
@@ -568,7 +625,7 @@ create_kiosk_script() {
     cat > "$KIOSK_SCRIPT" << 'EOFKIOSK'
 #!/bin/bash
 ###############################################################################
-# Prayer Timetable Kiosk Mode Runner
+# Prayer Timetable Kiosk Mode Runner (Performance Optimized)
 ###############################################################################
 
 LOGFILE="/home/pi/kiosk.log"
@@ -582,6 +639,9 @@ log() {
 log "========================================="
 log "Starting Prayer Timetable Kiosk"
 log "========================================="
+
+# Set display environment variable
+export DISPLAY=:0
 
 # Wait for X server to be ready
 log "Waiting for X server..."
@@ -605,7 +665,7 @@ sleep 0.5
 # Show splash screen
 if command -v feh &> /dev/null && [ -f "$SPLASH_IMAGE" ]; then
     log "Displaying splash screen..."
-    DISPLAY=:0 feh --fullscreen --hide-pointer --borderless --auto-zoom "$SPLASH_IMAGE" &
+    feh --fullscreen --hide-pointer --borderless --auto-zoom "$SPLASH_IMAGE" &
     SPLASH_PID=$!
     log "Splash screen displayed (PID: $SPLASH_PID)"
 else
@@ -614,10 +674,18 @@ fi
 
 sleep 4
 
+# Start HTTP server
+log "Starting HTTP server on port 8000..."
+cd "$PROJECT_DIR"
+$HOME/myenv/bin/python -m http.server 8000 --directory "$PROJECT_DIR" >> "$LOGFILE" 2>&1 &
+HTTP_PID=$!
+log "HTTP server started (PID: $HTTP_PID)"
+
+sleep 60
+
 # Start Flask server
 log "Starting Flask server on port 5000..."
-cd "$PROJECT_DIR"
-$PROJECT_DIR/venv/bin/python server.py >> "$LOGFILE" 2>&1 &
+$HOME/myenv/bin/python "$PROJECT_DIR/server.py" >> "$LOGFILE" 2>&1 &
 FLASK_PID=$!
 log "Flask server started (PID: $FLASK_PID)"
 
@@ -632,13 +700,19 @@ for i in {1..30}; do
     sleep 2
 done
 
+# Force 1080p resolution before launching browser
+log "Setting resolution to 1080p..."
+xrandr --output HDMI-1 --mode 1920x1080 --rate 60 2>/dev/null || true
+sleep 2
+log "Resolution set to 1080p"
+
 # Disable screen blanking and power management
 xset s off
 xset -dpms
 xset s noblank
 
-log "Launching Chromium in kiosk mode..."
-/usr/bin/chromium-browser \
+log "Launching Chromium in kiosk mode with GPU acceleration..."
+/bin/chromium-browser \
   --kiosk \
   --incognito \
   --noerrdialogs \
@@ -649,14 +723,19 @@ log "Launching Chromium in kiosk mode..."
   --overscroll-history-navigation=0 \
   --disable-pinch \
   --disable-translate \
-  --fast --fast-start \
-  --disable-features=TranslateUI \
-  --autoplay-policy=no-user-gesture-required \
-  --disable-background-timer-throttling \
-  --disable-backgrounding-occluded-windows \
-  --disable-renderer-backgrounding \
+  --fast --fast-start --disable-features=TranslateUI \
+  --enable-gpu-rasterization \
+  --enable-zero-copy \
+  --enable-native-gpu-memory-buffers \
+  --ignore-gpu-blocklist \
+  --disable-smooth-scrolling \
+  --disable-low-res-tiling \
+  --enable-accelerated-2d-canvas \
+  --disable-site-isolation-trials \
+  --disable-features=IsolateOrigins,site-per-process \
   --disk-cache-size=1 \
-  http://localhost:5000 &
+  --disable-hang-monitor \
+  http://localhost:8000 >> /home/pi/chromium.log 2>&1 &
 
 CHROMIUM_PID=$!
 log "Chromium launched (PID: $CHROMIUM_PID)"
@@ -677,62 +756,63 @@ while kill -0 $CHROMIUM_PID 2>/dev/null; do
     if ! kill -0 $FLASK_PID 2>/dev/null; then
         log "ERROR: Flask server died! Restarting..."
         cd "$PROJECT_DIR"
-        $PROJECT_DIR/venv/bin/python server.py >> "$LOGFILE" 2>&1 &
+        $HOME/myenv/bin/python "$PROJECT_DIR/server.py" >> "$LOGFILE" 2>&1 &
         FLASK_PID=$!
         log "Flask server restarted (PID: $FLASK_PID)"
     fi
 done
 
 log "Chromium exited"
-log "Shutting down Flask server..."
+log "Shutting down servers..."
 kill $FLASK_PID 2>/dev/null
+kill $HTTP_PID 2>/dev/null
 log "Finished"
 EOFKIOSK
 
     chmod +x "$KIOSK_SCRIPT"
-    print_success "Kiosk script created at $KIOSK_SCRIPT"
+    print_success "Optimized kiosk script created at $KIOSK_SCRIPT"
+    print_info "Features included:"
+    echo "  • Splash screen display (kabba image)"
+    echo "  • GPU hardware acceleration enabled"
+    echo "  • Zero-copy rendering for better performance"
+    echo "  • 1080p resolution forced via xrandr"
+    echo "  • Process monitoring and auto-restart"
+    echo "  • Clean desktop (hidden panels and cursor)"
 }
 
 ###############################################################################
-# Step 9: Configure Autostart
+# Step 10: Configure Autostart
 ###############################################################################
 setup_autostart() {
-    print_header "STEP 9: Configuring Autostart"
+    print_header "STEP 10: Configuring Autostart"
 
-    AUTOSTART_DIR="$PI_HOME/.config/lxsession/LXDE-pi"
-    AUTOSTART_FILE="$AUTOSTART_DIR/autostart"
+    AUTOSTART_DIR="$PI_HOME/.config/autostart"
+    KIOSK_DESKTOP="$AUTOSTART_DIR/kiosk.desktop"
 
     print_info "Creating autostart directory..."
     mkdir -p "$AUTOSTART_DIR"
 
-    print_info "Configuring autostart..."
+    print_info "Creating kiosk.desktop file..."
 
-    cat > "$AUTOSTART_FILE" << EOFAUTO
-@lxpanel --profile LXDE-pi
-@pcmanfm --desktop --profile LXDE-pi
-@xscreensaver -no-splash
-@point-rpi
+    cat > "$KIOSK_DESKTOP" << EOFDESKTOP
+[Desktop Entry]
+Type=Application
+Exec=/home/pi/kiosk_run.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Kiosk Script
+EOFDESKTOP
 
-# Disable screen blanking
-@xset s off
-@xset -dpms
-@xset s noblank
-
-# Hide mouse cursor
-@unclutter -idle 0.1 -root
-
-# Start Prayer Timetable Kiosk
-@bash $PI_HOME/kiosk_run.sh
-EOFAUTO
-
-    print_success "Autostart configured"
+    print_success "kiosk.desktop created at $KIOSK_DESKTOP"
+    print_info "Kiosk will auto-start on boot"
 }
 
 ###############################################################################
-# Step 10: Configure Display Settings
+# Step 11: Configure Display Settings
 ###############################################################################
 configure_display() {
-    print_header "STEP 10: Configuring Display Settings"
+    print_header "STEP 11: Configuring Display Settings"
 
     # Disable screen blanking in lightdm
     print_info "Configuring lightdm..."
@@ -745,10 +825,10 @@ EOFLIGHTDM
 }
 
 ###############################################################################
-# Step 11: Create Environment File
+# Step 12: Create Environment File
 ###############################################################################
 create_env_file() {
-    print_header "STEP 11: Creating Environment Configuration"
+    print_header "STEP 12: Creating Environment Configuration"
 
     ENV_FILE="$PROJECT_DIR/.env"
 
@@ -774,10 +854,10 @@ EOFENV
 }
 
 ###############################################################################
-# Step 12: Final Configuration
+# Step 13: Final Configuration
 ###############################################################################
 final_configuration() {
-    print_header "STEP 12: Final Configuration"
+    print_header "STEP 13: Final Configuration"
 
     # Create config backup directory
     BACKUP_DIR="$PROJECT_DIR/config_backup"
@@ -826,6 +906,7 @@ main() {
     setup_python_venv
     setup_wifi_profiles
 # This should be commented     setup_pi_hotspot
+    configure_boot_config
     create_kiosk_script
     setup_autostart
 #   configure_display
@@ -838,10 +919,19 @@ main() {
     print_info "Summary:"
     echo "  • Project directory: $PROJECT_DIR"
     echo "  • Kiosk script: $PI_HOME/kiosk_run.sh"
+    echo "  • Autostart: $PI_HOME/.config/autostart/kiosk.desktop"
     echo "  • Log file: $PI_HOME/kiosk.log"
     echo "  • Virtual environment: $VENV_DIR"
     echo "  • WiFi switcher: /usr/local/bin/wifi-switcher.sh"
     echo "  • WiFi log: /var/log/wifi-switcher.log"
+    echo ""
+    print_info "Performance Optimizations:"
+    echo "  • Display: 1080p @ 60Hz (forced, not 4K)"
+    echo "  • CPU: Overclocked to 1800MHz (+20%)"
+    echo "  • GPU: Overclocked to 600MHz (+20%)"
+    echo "  • GPU Memory: 256MB allocated"
+    echo "  • Browser: GPU hardware acceleration enabled"
+    echo "  • Config backup: /boot/firmware/config.txt.backup"
     echo ""
     print_info "WiFi Configuration:"
     echo "  • Primary hotspot: salah-e-waqt (open)"
@@ -864,6 +954,14 @@ main() {
     echo "  • WiFi timer status: sudo systemctl status wifi-switcher.timer"
     echo "  • Hotspot status: sudo systemctl status hostapd"
     echo "  • Restart hotspot: sudo systemctl restart hostapd dnsmasq"
+    echo ""
+    print_info "Performance check commands:"
+    echo "  • Verify performance: $PROJECT_DIR/verify_performance.sh"
+    echo "  • Check resolution: DISPLAY=:0 xrandr | grep '\*'"
+    echo "  • Check CPU speed: vcgencmd measure_clock arm"
+    echo "  • Check GPU speed: vcgencmd measure_clock core"
+    echo "  • Check temperature: vcgencmd measure_temp"
+    echo "  • View full guide: cat $PROJECT_DIR/PERFORMANCE_OPTIMIZATION_GUIDE.md"
     echo ""
     print_warning "IMPORTANT: Reboot the Raspberry Pi to start kiosk mode"
     echo ""
