@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Mirza-Regular';
+    src: url('..\\fonts\\Mirza-Regular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  .names-container
+  {
+
+    text-align: center;
+    background: var(--name-container-background);
+    width: 50%;
+    /* height: 40%; */
+    margin-left: 1%;
+    padding: 0.7vw;
+    margin-top: 0;
+    border-radius: 5%;
+    margin-top:0%;
+    margin-right: 0%;
+    box-shadow: var(--name-container-box-shadow);
+    border: 0.7vw solid transparent;
+    transition: opacity 1s ease;
+    /* border: 1px solid red; */
+
+
+  }
+
+  .allah-name
+  {
+    /* color:rgb(99, 74, 145); */
+  background: linear-gradient(145deg,#dca819 0%, #dca819 100%);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: none;
+    font-family: 'Mirza-Regular';
+    font-size: 7.2vw;
+    font-weight: bold;
+    transition: opacity 1s ease;
+    will-change: opacity;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    margin: 0;
+    padding: 0;
+    margin-top : 5%;
+  }
+
+  .allah-name-english
+  {
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite;
+    /* font-family: 'Scheherazade'; */
+    font-size: 2vw;
+    font-weight: bold;
+    transition: opacity 1s ease;
+    will-change: opacity, background-position;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    margin-top: 10%;
+    margin-bottom: 0px;
+    padding: 0;
+    /* border:1px solid red; */
+  }

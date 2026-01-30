@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Times</title>
+    <link rel="stylesheet" href="css-folder/styles.css">
+    <link rel="stylesheet" href="css-folder/header.css">
+    <link rel="stylesheet" href="css-folder/detail.css">
+    <link rel="stylesheet" href="css-folder/detail-time-container.css">
+    <link rel="stylesheet" href="css-folder/details-date-container.css">
+    <link rel="stylesheet" href="css-folder/detail-next-prayer.css">
+    <link rel="stylesheet" href="css-folder/detail-sun-sehar-container.css">
+    <link rel="stylesheet" href="css-folder/detail-99-names-container.css">
+    <link rel="stylesheet" href="css-folder/detail-all-namaz-container.css">
+    <link rel="stylesheet" href="css-folder/detail-hadid-container.css">
+    <link rel="stylesheet" href="css-folder/detail-taraweeh-dua.css">
+    <link rel="stylesheet" href="http://127.0.0.1:5520/theme.css">
+</head>
+
+
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <div class="header-left-section">
+
+                <img src="images/kabba-image-s.png" class="kaba-image">
+            </div>
+            <div class="header-middle-section">
+                <img src="images/center-image.png" alt="Logo" class="la-image">
+
+            </div>
+            <div class="header-right-section">
+
+                <img src="images/madina-image.png" class="madina-image">
+            </div>
+        </div>
+        <div class="detail-container">
+            <div class="detail-left-section">
+                <div class="date-time-container">
+                    <div class="date-container">
+                        <h1 id="current-date">loading...</h1>
+                        <h1 id="current-day">loading...</h1>
+                    </div>
+                    <div class="time-container">
+                        <div class="start-marker"></div> <!-- Stationary green dot -->
+                        <div class="red-dot"></div>
+                        <h1 class="current-time-class" id="current-time">
+                            <span id="hours">04</span>:<span id="minutes">35</span>:<span id="seconds">00</span>
+                            <span id="ampm">AM</span>
+                        </h1>
+
+                    </div>
+
+                </div>
+                <div class="next-prayer-parent-container">
+                    <div class="next-prayer-container">
+                        <div class="prayer-title">
+                            <h1 id="next-prayer-name">ASR</h1>
+                        </div>
+                        <div class='timing-details'>
+
+                            <div class="azan-details">
+                                <p class="azan-cls">AZAAN</p>
+                                <p class="azan-cls-t" id="azaan-time">loading...</p>
+                            </div>
+
+                            <div class="jamat-details">
+                                <p class="azan-cls">JAMAT</p>
+                                <p class="azan-cls-t" id="namaz-time">loading...</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="names-container">
+                        <h1 class="allah-name">الرَّحْمَنُ</h1>
+                        <p class="allah-name-english">Ar-Rahman</p>
+
+                    </div>
+                </div>
+                <div class="hadith_container" id="hadith-box">
+                    <!-- <div class="hadith-frame"> -->
+                    <p class="arabic" id="hadith-arabic"></p>
+                    <p class="urdu" id="hadith-urdu"></p>
+
+                    <!-- </div> -->
+                </div>
+
+
+
+            </div>
+
+            <div class="detail-right-section">
+
+                <div class="all-namaz-time">
+
+                    <div class="prayer-row">
+                        <p class="prayer-name" data-index="0">FAJR</p>
+
+                        <p class="time" id="fajr-azaan-time"></p>
+
+                        <p class="time" id="fajr-time"></p>
+                    </div>
+                    <div class="prayer-row">
+                        <p class="prayer-name" data-index="1">ZUHAR</p>
+
+                        <p class="time" id="zuhar-azaan-time"></p>
+
+                        <p class="time" id="zuhar-time"></p>
+                    </div>
+                    <div class="prayer-row">
+                        <p class="prayer-name" data-index="2">ASR</p>
+
+                        <p class="time" id="asr-azaan-time"></p>
+
+                        <p class="time" id="asr-time"></p>
+                    </div>
+                    <div class="prayer-row">
+                        <p class="prayer-name" data-index="3">MAGHRIB</p>
+
+                        <p class="time" id="maghrib-azaan-time"></p>
+
+                        <p class="time" id="maghrib-time"></p>
+                    </div>
+                    <div class="prayer-row">
+                        <p class="prayer-name" data-index="4">ISHA</p>
+
+                        <p class="time" id="isha-azaan-time"></p>
+
+                        <p class="time" id="isha-time"></p>
+                    </div>
+                    <div class="prayer-row">
+                        <p class="prayer-name-jumah" data-index="5">JUMAH</p>
+
+                        <p class="time-jumah" id="jumah-azaan-time"></p>
+
+                        <p class="time-jumah" id="jumah-jamat-time"></p>
+                    </div>
+                </div>
+
+                <div class="sun-sehar-container">
+                    <div class="sun-container">
+                        <div class="sun-rise">
+                            <p class="sun-label">Tulu-e Aftaab</p>
+                        </div>
+                    </div>
+                    <div class="sehar-container">
+                        <div class="sehar">
+                            <p class="sehar-label">Aaghaz</p>
+                            <p class="sehar-time" id="aaghaz-time">00:00</p>
+                        </div>
+                        <div class="iftar">
+                            <p class="iftar-label">Ikhtitaam</p>
+                            <p class="iftar-time" id="ikhtitaam-time">00:00</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="zawaal-container">
+                    <div class="sun-container">
+                        <div class="sun-rise">
+                            <p class="sun-label">Zawal</p>
+                        </div>
+                    </div>
+                    <div class="sehar-container">
+                        <div class="sehar">
+                            <p class="sehar-label">Aaghaz</p>
+                            <p class="sehar-time" id="zawal-aaghaz-time">00:00</p>
+                        </div>
+                        <div class="iftar">
+                            <p class="iftar-label">Ikhtitaam</p>
+                            <p class="iftar-time" id="zawal-ikhtitaam-time">00:00</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="Ghuroob-container">
+                    <div class="sun-container">
+                        <div class="sun-rise">
+                            <p class="sun-label">Ghuroob-e Aftaab</p>
+                        </div>
+                    </div>
+                    <div class="sehar-container">
+                        <div class="sehar">
+                            <p class="sehar-label">Aaghaz</p>
+                            <p class="sehar-time" id="ghuroob-aaghaz-time">00:00</p>
+                        </div>
+                        <div class="iftar">
+                            <p class="iftar-label">Ikhtitaam</p>
+                            <p class="iftar-time" id="ghuroob-ikhtitaam-time">00:00</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="Chasht-container">
+                    <div class="sun-container">
+                        <div class="sun-rise">
+                            <p class="sun-label">Chasht</p>
+                        </div>
+                    </div>
+                    <div class="sehar-container">
+                        <div class="sehar">
+                            <p class="sehar-label">Aaghaz</p>
+                            <p class="sehar-time" id="chasht-aaghaz-time">00:00</p>
+                        </div>
+                        <div class="iftar">
+                            <p class="iftar-label">Ikhtitaam</p>
+                            <p class="iftar-time" id="chasht-ikhtitaam-time">00:00</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="Awwābīn-container">
+                    <div class="sun-container">
+                        <div class="sun-rise">
+                            <p class="sun-label">Awwābīn</p>
+                        </div>
+                    </div>
+                    <div class="sehar-container">
+                        <div class="sehar">
+                            <p class="sehar-label">Aaghaz</p>
+                            <p class="sehar-time" id="awwabin-aaghaz-time">00:00</p>
+                        </div>
+                        <div class="iftar">
+                            <p class="iftar-label">Ikhtitaam</p>
+                            <p class="iftar-time" id="awwabin-ikhtitaam-time">00:00</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="Tahajjud-container">
+                    <div class="sun-container">
+                        <div class="sun-rise">
+                            <p class="sun-label">Tahajjud</p>
+                        </div>
+                    </div>
+                    <div class="sehar-container">
+                        <div class="sehar">
+                            <p class="sehar-label">Aaghaz</p>
+                            <p class="sehar-time" id="tahajjud-aaghaz-time"">00:00</p>
+                        </div>
+                      <div class=" iftar">
+                            <p class="iftar-label">Ikhtitaam</p>
+                            <p class="iftar-time" id="tahajjud-ikhtitaam-time">00:00</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="sehari-container">
+                    <div class="sun-container">
+                        <div class="sun-rise">
+                            <p class="sun-label">Sehar</p>
+                        </div>
+                    </div>
+                    <div class="sehar-container">
+                        <div class="sun-rise">
+                            <p class="sehari-time" id="sehari-time"">00:00</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                                <div class="iftari-container">
+                    <div class="sun-container">
+                        <div class="sun-rise">
+                            <p class="sun-label">Iftar</p>
+                        </div>
+                    </div>
+                    <div class="sehar-container">
+                        <div class="sun-rise">
+                            <p class="iftari-time" id="iftari-time"">00:00</p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class=" Taraweeh-dua">
+                            <p style="margin: 0;">Tasbeeh Taraweeh</p>
+                            سُبْحَانَ ذِی الْمُلْکِ وَالْمَلَکُوْتِ ط سُبْحَانَ ذِی الْعِزَّةِ وَالْعَظَمَةِ
+                            وَالْهَيْبَةِ
+                            وَالْقُدْرَةِ وَالْکِبْرِيَآئِ وَالْجَبَرُوْتِ ط سُبْحَانَ الْمَلِکِ الْحَيِ الَّذِی لَا
+                            يَنَامُ وَلَا
+                            يَمُوْتُ سُبُّوحٌ قُدُّوْسٌ رَبُّنَا وَرَبُّ الْمَلَائِکَةِ وَالرُّوْحِ ط اَللّٰهُمَّ
+                            اَجِرْنَا مِنَ
+                            النَّارِ يَا مُجِيْرُ يَا مُجِيْرُ يَا مُجِيْر۔
+                        </div>
+
+
+                    </div>
+                    <!-- <div class="marquee">
+        <span>This is scrolling text using CSS animations 🚀</span>
+      </div> -->
+                    <div class="trailer-container">
+                        <div class="footer-top">
+                            <h1>Roohani Madarsa and Masjid, Nagpur-13</h1>
+                        </div>
+                        <div class="footer-bottom">
+                            <p>Salah-e-Waqt, Mobile- +91-9284099985</p>
+                        </div>
+                    </div>
+                    <audio id="azan-audio" src="audio/azan1.mp3" preload="auto"></audio>
+                    <audio id="beep-audio" src="audio/beep.mp3" preload="auto"></audio>
+
+
+
+                    <script src="js-folder/update-time.js"></script>
+                    <!-- <script src="js-folder/next-prayer.js"></script> -->
+                    <script src="js-folder/taraweeh-dua-display.js"></script>
+                    <script src="js-folder/all-azan-namaz-timing.js"></script>
+                    <script src="js-folder/suncalc.min.js"></script>
+                    <script src="js-folder/sunset-sunrise-time.js"></script>
+                    <script src="js-folder/99-names-update.js"></script>
+                    <script src="js-folder/update-all-namaz-time.js"></script>
+                    <script src="js-folder/toggle-tulu-zawal.js"></script>
+
+                    <!-- <script src="js-folder/hadith.js"></script> -->
+                    <!-- <script src="js-folder/ayatal.js"></script> -->
+                    <script src="js-folder/sample_hadis.js"></script>
+                    <script src="js-folder/mosque-details.js"></script>
+
+                    <script src="js-folder/taraweeh-time-display.js"></script>
+                    <script src="js-folder/beep-player.js"></script>
+    <!-- Ayatul Kursi fullscreen overlay -->
+    <div class="Ayatal-khursi">
+        <img src="images/ayatul_khursi.png" alt="Ayatul Kursi" class="ayatul-kursi-image">
+    </div>
+
+    <!-- Taraweeh Tasbeeh fullscreen overlay -->
+    <div class="Taraweeh-fullscreen">
+        <img src="images/taraweeh.png" alt="Tasbeeh Taraweeh" class="taraweeh-image">
+    </div>
+
+</body>
+
+</html>

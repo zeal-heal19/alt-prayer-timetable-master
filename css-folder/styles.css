@@ -1,0 +1,212 @@
+:root {
+
+  /* Time container colors */
+  --time-container-background: #d4edc3;
+  --time-container-border: #215221;
+  --time-container-moving-dot: #ff0000;
+  --time-container-start-marker: #215221;
+  --time-contiainer-hours-minutes: linear-gradient(145deg, #0a3d0a 30%, #4caf50 32%, #0a3d0a 100%);
+  --time-container-seconds: linear-gradient(145deg, #b33a00 0%, #ee4b0a 25%, #ef955e 58.5%, #ff7f32 59.5%, #ee4b0a 75%, #b33a00 100%);
+  --time-container-am-pm: linear-gradient(145deg, #b33a00 0%, #ee4b0a 25%, #ff7f32 40%, #ffffff 50%, #ff7f32 60%, #ee4b0a 75%, #b33a00 100%);
+  --time-container-box-shadow: none;
+  --time-container-border-image: linear-gradient(45deg, #215221 0%, #215221 43%, rgba(255, 255, 255, 0.882) 45%, #215221 46%, #1a401a 75%, #215221 100%) 1;
+  --time-container-ibackground: none;
+
+  --next-prayer-container-background: #f8f4e8;
+  --next-prayer-container-box-shadow: inset 0 0 1.4vw rgba(128, 0, 0, 0.2);
+  --next-prayer-title-color: linear-gradient(145deg, #800000 30%, #e84646 32%, #800000 100%);
+
+  --all-prayer-container-background: #f8f4e8;
+  --all-prayer-container-box-shadow: inset 0 0 1vw rgba(0, 128, 11, 0.2);
+
+  --name-container-background: #f8f4e8;
+  --name-container-box-shadow: inset 0 0 1vw rgba(0, 128, 11, 0.2);
+
+
+  --hadis-container-background: linear-gradient(135deg, #fdf6e3, #f8f4e8);
+  --hadis-container-box-shadow: inset 0 0 20px rgba(128, 0, 0, 0.2), 0 0 10px rgba(128, 0, 0, 0.1);
+
+  --sun-sehar-container-background: #f8f4e8;
+  --sun-sehar-container-box-shadow: inset 0 0 1vw rgba(238, 194, 239, 0.69);
+
+
+  --jummah-prayer-background: linear-gradient(145deg, #805e00 30%, #886915 32%, #805e00 100%);
+  --eid-prayer-background: linear-gradient(145deg, #b8860b 30%, #ffd900 32%, #b8860b 100%);
+
+  --hadis-arabic-background: linear-gradient(145deg, #0a3d0a 30%, #4caf50 32%, #0a3d0a 100%);
+  --hadis-urdu-background: linear-gradient(145deg, #800000 30%, #e84646 32%, #800000 100%);
+
+  --trailer-background: linear-gradient(145deg, #0a3d0a 30%, #4caf50 32%, #0a3d0a 100%);
+
+  --ayatul-kursi-color : #0a3d0a;
+  --body-background: #FFFFFF;
+  --green-primary: #215221;
+  --green-border: #0a5c36;
+  --green-light: #d4edc3;
+  --orange-accent: #ee4b0a;
+  --maroon: #800000;
+  --golden: #dca819;
+  --beige-light: #f8f4e8;
+  --beige-gradient-start: #fdf6e3;
+  --beige-gradient-end: #f8f4e8;
+  --brown-frame: #a88b5f;
+  --brown-header: #6b4f3f;
+  --brown-arabic: #5c3d2e;
+  --brown-urdu: #3a2b1d;
+  --brown-shadow: rgba(128, 0, 0, 0.2);
+  --brown-shadow-light: rgba(128, 0, 0, 0.1);
+  --green-shadow: rgba(0, 128, 11, 0.2);
+  --pink-shadow: rgba(238, 194, 239, 0.69);
+  --black-shadow: rgba(0, 0, 0, 0.3);
+/* --black-shadow: rgba(0, 0, 0, 0.3); */
+}
+
+body {
+  /* border :2px solid green; */
+  padding-top: 0.5%;
+  /* padding: 0; */
+  padding-bottom: 0%;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border: 0.7rem solid transparent;
+  background-color: var(--body-background);
+  /* background-color: #f8f8f0; */
+  border-image:
+    repeating-linear-gradient(45deg, #0a5c36 0px, #0a5c36 10px,
+      #d4edc3 10px, #d4edc3 20px) 20;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  /* background-color: #f8f8f0; */
+  background-color: var(--body-background);
+
+
+
+}
+
+
+
+
+
+
+
+
+.date-container {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 2%;
+  margin-bottom: 0;
+  text-align: center;
+  border-radius: 5%;
+  /*   border: 1px solid lightblue; */
+  
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.015);
+}
+
+.date-container h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.event-container {
+  /*   border : 1px solid gold; */
+  /* margin-right : 10px;
+  margin-left : 10px; */
+  margin-top: 10px;
+
+
+}
+
+
+
+.prayer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  border-bottom: 1px solid #ddd;
+}
+
+.prayer-row:last-child {
+  border-bottom: none;
+}
+
+.prayer-name {
+  font-size: 15px;
+  font-weight: bold;
+  color: #215221;
+  margin: 0;
+  text-align: center;
+  width: 100px;
+  transition: opacity 0.5s ease-in-out;
+  display: inline-block;
+}
+
+.time {
+  font-size: 15px;
+  color: #215221;
+  font-weight: bold;
+  margin: 0;
+}
+
+.trailer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 9vw;
+  margin-top: 9%;
+  /* border: 1px solid black; */
+}
+
+.footer-top {
+  background: var(--trailer-background);
+  background-size: 200% 200%;
+  animation: shimmer 90s linear infinite;
+  /* background-color: #215221; */
+  width: 100%;
+  text-align: center;
+  will-change: background-position;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.footer-top h1 {
+  color: white;
+  font-size: 1.3vw;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 1.2vw;
+  margin-top: 0.2vw;
+  font-weight: bold;
+    background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite;
+  will-change: background-position;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}

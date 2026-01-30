@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salah Timing Admin</title>
+  <link rel="stylesheet" href="static/home.css">
+  <!-- Theme stylesheet served by Flask -->
+<link id="themeStylesheet" rel="stylesheet" href="https://potential-pancake-4jrwxp6qrq6wfwp-5000.app.github.dev/theme.css">
+<style id="liveThemeStyle"></style> <!-- empty but ready for overrides -->
+</head>
+<body>
+  <div class="home-container">
+    <h2>Salah Timing Admin</h2>
+    
+    <div style="margin: 1em 0;">
+  <label for="themeSelect">Select Theme:</label>
+  <select id="themeSelect">
+    <option value="default">Default</option>
+    <option value="dark">Dark</option>
+  </select>
+</div>
+
+
+    <div class="button-group">
+      <button id="changepassBtn">Update Password</button>
+      <button id="changeBtn">Change SalahTime</button>
+      <button id="logoutBtn">Logout</button>
+    </div>
+
+    <div class="timings-section">
+      <h3>Current Salah Timings</h3>
+      <table class="timings-table">
+        <thead>
+          <tr>
+            <th>Prayer</th>
+            <th>Azan Time</th>
+            <th>Namaz Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fajr</td>
+            <td id="fajr_azan">05:00</td>
+            <td id="fajr_namaz">05:30</td>
+          </tr>
+          <tr>
+            <td>Zuhar</td>
+            <td id="zuhar_azan">13:00</td>
+            <td id="zuhar_namaz">13:30</td>
+          </tr>
+          <tr>
+            <td>Asr</td>
+            <td id="asr_azan">17:00</td>
+            <td id="asr_namaz">17:30</td>
+          </tr>
+          <tr>
+            <td>Maghrib</td>
+            <td id="maghrib_azan">19:15</td>
+            <td id="maghrib_namaz">19:20</td>
+          </tr>
+          <tr>
+            <td>Isha</td>
+            <td id="isha_azan"></td>
+            <td id="isha_namaz"></td>
+          </tr>
+          <tr>
+            <td>Jumah</td>
+            <td id="jumah_azan">13:15</td>
+            <td id="jumah_namaz">13:30</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 1vw" class="button-group">
+        <button id="addeventBtn">Add Eid Time</button>
+        <button id="addtaraweehBtn">Add Taraweeh Time</button>
+      </div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='home.js') }}" defer></script>
+
+  <script>
+   const themeSelect = document.getElementById("themeSelect");
+
+themeSelect.addEventListener("change", function () {
+  const selectedTheme = this.value;
+
+  // 1️⃣ Update active theme on the server
+  fetch(`https://potential-pancake-4jrwxp6qrq6wfwp-5000.app.github.dev/set-theme/${selectedTheme}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("access_token")
+    }
+  })
+    .then(res => {
+      if (!res.ok) throw new Error("Theme change failed: " + res.status);
+      return res.json();
+    })
+    .then(data => {
+      console.log("✅ Theme changed:", data);
+
+      // 2️⃣ Fetch the updated theme.css (with cache-busting timestamp)
+      return fetch(`https://potential-pancake-4jrwxp6qrq6wfwp-5000.app.github.dev/theme.css?ts=${Date.now()}`);
+    })
+    .then(res => res.text())
+    .then(css => {
+      // 3️⃣ Inject new CSS into <style>
+      const styleTag = document.getElementById("liveThemeStyle");
+      styleTag.innerHTML = css;
+      console.log("🎨 Theme applied live");
+    })
+    .catch(err => console.error("❌ Error:", err));
+});
+
+
+  </script>
+</body>
+</html>

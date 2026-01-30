@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Namaz Time Selector</title>
+  <link rel="stylesheet" href="static/eid-namaz.css" />
+</head>
+<body>
+
+
+
+  <div class="container">
+      <!-- show paragraph that time is in 24 hr format
+     <p class="time-format-info">Time is in 24-hour format</p> -->
+    <label for="namaz">Namaz:</label>
+    <div class="field-group">
+      <select id="namaz" name="namaz">
+        <option value="EID AL-FITR">EID AL-FITR</option>
+        <option value="EID AL-ADHA">EID AL-ADHA</option>
+        
+      </select>
+
+      <input type="datetime-local" id="namaz-time" name="namaz-time">
+    
+    </div>
+    <div class="button-group">
+      <button id="saveeidBtn" style="margin:20px;">Save</button>
+      <button id="cancleeidBtn">Cancle</button>
+    </div>
+    
+  </div>
+  <script src="{{ url_for('static', filename='eid-namaz.js') }}" defer></script>
+
+</body>
+</html>

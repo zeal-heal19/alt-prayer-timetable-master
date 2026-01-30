@@ -1,0 +1,353 @@
+/* Jummah Prayer Details */
+.sun-sehar-container {
+  /* position: relative; */
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 21%;
+  background: var(--sun-sehar-container-background);
+  border-radius: 1vw;
+  margin-left: 5%;
+  margin-top: 1%;
+  margin-right: 0;
+  padding: 2%;
+  text-align: center;
+  /* font-size: 5px; */
+  font-weight: bold;
+  /* color: var(--green-primary); */
+  /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15); */
+  overflow: hidden;
+  box-shadow: var(--sun-sehar-container-box-shadow);
+  border: 1.2vw solid transparent;
+}
+
+.zawaal-container {
+  /* position: relative; */
+  display: none;
+  flex-direction: row;
+  width: 80%;
+  height: 21%;
+  background: var(--sun-sehar-container-background);
+  border-radius: 1vw;
+  margin-left: 5%;
+  margin-top: 1%;
+  margin-right: 0;
+  padding: 2%;
+  text-align: center;
+  /* font-size: 5px; */
+  font-weight: bold;
+  /* color: var(--green-primary); */
+  /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15); */
+  overflow: hidden;
+  box-shadow: var(--sun-sehar-container-box-shadow);
+  border: 1.2vw solid transparent;
+}
+
+.Ghuroob-container {
+  /* position: relative; */
+  display: none;
+  flex-direction: row;
+  width: 80%;
+  height: 21%;
+  background: var(--sun-sehar-container-background);
+  border-radius: 1vw;
+  margin-left: 5%;
+  margin-top: 1%;
+  margin-right: 0;
+  padding: 2%;
+  text-align: center;
+  /* font-size: 5px; */
+  font-weight: bold;
+  /* color: var(--green-primary); */
+  /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15); */
+  overflow: hidden;
+  box-shadow: var(--sun-sehar-container-box-shadow);
+  border: 1.2vw solid transparent;
+}
+
+.Chasht-container {
+  /* position: relative; */
+  display: none;
+  flex-direction: row;
+  width: 80%;
+  height: 21%;
+  background: var(--sun-sehar-container-background);
+  border-radius: 1vw;
+  margin-left: 5%;
+  margin-top: 1%;
+  margin-right: 0;
+  padding: 2%;
+  text-align: center;
+  /* font-size: 5px; */
+  font-weight: bold;
+  /* color: var(--green-primary); */
+  /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15); */
+  overflow: hidden;
+  box-shadow: var(--sun-sehar-container-box-shadow);
+  border: 1.2vw solid transparent;
+}
+
+.Awwābīn-container {
+  /* position: relative; */
+  display: none;
+  flex-direction: row;
+  width: 80%;
+  height: 21%;
+  background: var(--sun-sehar-container-background);
+  border-radius: 1vw;
+  margin-left: 5%;
+  margin-top: 1%;
+  margin-right: 0;
+  padding: 2%;
+  text-align: center;
+  /* font-size: 5px; */
+  font-weight: bold;
+  /* color: var(--green-primary); */
+  /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15); */
+  overflow: hidden;
+  box-shadow: var(--sun-sehar-container-box-shadow);
+  border: 1.2vw solid transparent;
+}
+
+.Tahajjud-container {
+  /* position: relative; */
+  display: none;
+  flex-direction: row;
+  width: 80%;
+  height: 21%;
+  background: var(--sun-sehar-container-background);
+  border-radius: 1vw;
+  margin-left: 5%;
+  margin-top: 1%;
+  margin-right: 0;
+  padding: 2%;
+  text-align: center;
+  /* font-size: 5px; */
+  font-weight: bold;
+  /* color: var(--green-primary); */
+  /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15); */
+  overflow: hidden;
+  box-shadow: var(--sun-sehar-container-box-shadow);
+  border: 1.2vw solid transparent;
+}
+
+.sehari-container {
+  /* position: relative; */
+  display: none;
+  flex-direction: row;
+  width: 80%;
+  height: 21%;
+  background: var(--sun-sehar-container-background);
+  border-radius: 1vw;
+  margin-left: 5%;
+  margin-top: 1%;
+  margin-right: 0;
+  padding: 2%;
+  text-align: center;
+  /* font-size: 5px; */
+  font-weight: bold;
+  /* color: var(--green-primary); */
+  /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15); */
+  overflow: hidden;
+  box-shadow: var(--sun-sehar-container-box-shadow);
+  border: 1.2vw solid transparent;
+}
+
+
+.iftari-container {
+  /* position: relative; */
+  display: none;
+  flex-direction: row;
+  width: 80%;
+  height: 21%;
+  background: var(--sun-sehar-container-background);
+  border-radius: 1vw;
+  margin-left: 5%;
+  margin-top: 1%;
+  margin-right: 0;
+  padding: 2%;
+  text-align: center;
+  /* font-size: 5px; */
+  font-weight: bold;
+  /* color: var(--green-primary); */
+  /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15); */
+  overflow: hidden;
+  box-shadow: var(--sun-sehar-container-box-shadow);
+  border: 1.2vw solid transparent;
+}
+
+.sun-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  box-shadow: 2px 4px 10px var(--black-shadow);
+  /* border: 1px solid; */
+}
+
+.sun-rise {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid pink; */
+  width: 100%;
+  height: 100%;
+
+}
+
+.sun-label {
+  font-size: 2.8vw;
+  background: var(--next-prayer-title-color);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-left: 2%;
+}
+
+.sun-time {
+  font-size: 2.3vw;
+  background: var(--next-prayer-title-color);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-right: 10%;
+}
+
+.sun-set {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid pink; */
+  width: 100%;
+  height: 50%;
+}
+
+.sun-set-label {
+  font-size: 2.3vw;
+  background: var(--next-prayer-title-color);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-left: 2%;
+}
+
+.sun-set-time {
+  font-size: 2.3vw;
+  background: var(--next-prayer-title-color);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-right: 10%;
+}
+
+
+.sehar-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  box-shadow: 2px 4px 10px var(--black-shadow);
+  /* border: 1px solid green; */
+}
+
+.sehar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid pink; */
+  width: 100%;
+  height: 50%;
+}
+
+.sehar-label {
+  font-size: 1.5vw;
+
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-left: 10%;
+}
+
+.sehar-time {
+  font-size: 2.4vw;
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-right: 2%;
+}
+
+.iftar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid pink; */
+  width: 100%;
+  height: 50%;
+}
+
+.iftar-label {
+  font-size: 1.4vw;
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-left: 10%;
+}
+
+.iftar-time {
+  font-size: 2.4vw;
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-right: 2%;
+}
+
+
+.sehari-time {
+
+
+  font-size: 2.8vw;
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-left: 2%;
+}
+
+.iftari-time {
+
+
+  font-size: 2.8vw;
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-left: 2%;
+}

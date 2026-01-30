@@ -1,0 +1,205 @@
+@font-face {
+    font-family: 'Mirza-Regular';
+    src: url('..\\fonts\\Mirza-Regular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'Amar Nastaleeq';
+    src: url('..\\fonts\\Amar_Nastaleeq.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+.hadith_container {
+  text-align: center;
+  background: var(--hadis-container-background);
+  width: 92%;
+  height: 26%;
+  margin-left: 3%;
+  padding: 0.7vw;
+  margin-top: 1%;
+  margin-right: 5%;
+  border-radius: 2%;
+  box-shadow: var(--hadis-container-box-shadow);
+  border: 0.7vw solid transparent;
+  transition: opacity 1s ease;
+  overflow: hidden;
+  line-height: 1;
+  position: relative;
+}
+
+/* Decorative Frame */
+.hadith-frame {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5vw;
+  border: 2px dashed var(--brown-frame);
+  border-radius: 1vw;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Header */
+.hadith-header {
+  font-size: 1.5vw;
+  font-weight: bold;
+  color: var(--brown-header);
+  margin-bottom: 0.5vw;
+  font-family: 'Segoe UI', sans-serif;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Arabic Text */
+.arabic {
+  font-family: 'Mirza-Regular', serif;
+  font-size: clamp(1.4vw, 2.4vw, 3.4vw);
+    background: var(--hadis-arabic-background);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s infinite;
+  direction: rtl;
+  margin: 0.5vw 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+  line-height: 1.2;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Urdu Text */
+.urdu {
+  font-family: 'Amar Nastaleeq', serif;
+  font-size: clamp(1.2vw, 2.2vw, 3vw);
+    background: var(--hadis-urdu-background);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  direction: rtl;
+  margin: 0.3vw 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+  line-height: 2.2;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+ 
+
+
+.eid-timing_container
+{
+  /* background-color: lightcoral; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1px solid black;; */
+  /* padding-left: 0%; */
+  
+  
+}
+
+.eid-name {
+  width: 100%;
+  height : 50%;
+  /* background-color: lightblue; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 3%;
+  margin-left: 0%;
+}
+.eid-namaz-label {
+  
+  font-size: 4.2vw;
+  font-weight: bold;
+  /* align-items: cnter; */
+  margin-left: 5%;
+    background: var(--eid-prayer-background);
+  background-size: 250% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+}
+.eid-time-label {
+  font-size: 4.5vw;
+  margin-right: 5%;
+  font-weight: bold; 
+  background: var(--eid-prayer-background);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 30s linear infinite;
+}
+
+
+
+.eid-date{
+  width: 100%;
+  height: 50%;
+  margin-top: 3%;
+  /* background-color: rgb(58, 0, 76); */
+  display: block;
+}
+.eid-date-label
+{
+  font-size: 2.0vw;
+  font-weight: bold;
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-left: 5%;
+}
+
+
+ /*
+  //<div class="eid-row">
+//     <p class="namaz-label">Namaz:</p>
+//     <p class="namaz-time">${data.namaz}</p>
+//   </div>
+//   <div class="eid-row">
+//     <p class="namaz-label">Time:</p>
+//     <p class="namaz-time">${data.datetime.split("T")[1]}</p>
+//   </div>
+//     <div class="eid-row">
+//     <p class="namaz-label">Date:</p>
+//     <p class="namaz-time">${data.datetime.split("T")[0]}</p>
+//   </div>
+              
+ */
+
+ .eid-mubarak-message h1{
+  text-align:center; 
+  font-size: 4.5vw; 
+  padding-bottom: 1%;
+   
+    background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-top:3%;
+ }
+

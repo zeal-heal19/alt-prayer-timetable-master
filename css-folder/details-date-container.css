@@ -1,0 +1,38 @@
+  
+.date-container
+{
+    /* border:1px solid lightpink; */
+    width: 40%;
+    height: 40%;
+    margin-left:2%;
+    margin-top: 7%;
+    margin-right: 0.5%;
+    
+}
+
+#current-date
+{
+    font-size:1.9vw;
+
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+}
+
+#current-day
+{
+
+  background: var(--next-prayer-title-color);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+    font-size:1.4vw;
+}
+
+
+

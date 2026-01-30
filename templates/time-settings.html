@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prayer Time Settings</title>
+  <link rel="stylesheet" href="static/time-settings.css">
+</head>
+<body>
+  <div class="settings-container">
+    <h2>Prayer Time Settings</h2>
+    <form>
+      <div class="prayer-group">
+        <h3>Daily Prayers</h3>
+        <div class="prayer-row">
+          <div class="prayer-col">
+            <label for="fajr_azan">Fajr Azan</label>
+            <input type="time" id="fajr_azan" name="fajr_azan" required>
+          </div>
+          <div class="prayer-col">
+            <label for="fajr_prayer">Fajr Prayer</label>
+            <input type="time" id="fajr_prayer" name="fajr_prayer" required>
+          </div>
+        </div>
+        <div class="prayer-row">
+          <div class="prayer-col">
+            <label for="dhuhr_azan">Dhuhr Azan</label>
+            <input type="time" id="dhuhr_azan" name="dhuhr_azan" required>
+          </div>
+          <div class="prayer-col">
+            <label for="dhuhr_prayer">Dhuhr Prayer</label>
+            <input type="time" id="dhuhr_prayer" name="dhuhr_prayer" required>
+          </div>
+        </div>
+        <div class="prayer-row">
+          <div class="prayer-col">
+            <label for="asr_azan">Asr Azan</label>
+            <input type="time" id="asr_azan" name="asr_azan" required>
+          </div>
+          <div class="prayer-col">
+            <label for="asr_prayer">Asr Prayer</label>
+            <input type="time" id="asr_prayer" name="asr_prayer" required>
+          </div>
+        </div>
+        <div class="prayer-row">
+          <div class="prayer-col">
+            <label for="maghrib_azan">Maghrib Azan</label>
+            <input type="time" id="maghrib_azan" name="maghrib_azan" required>
+          </div>
+          <div class="prayer-col">
+            <label for="maghrib_prayer">Maghrib Prayer</label>
+            <input type="time" id="maghrib_prayer" name="maghrib_prayer" required>
+          </div>
+        </div>
+        <div class="prayer-row">
+          <div class="prayer-col">
+            <label for="isha_azan">Isha Azan</label>
+            <input type="time" id="isha_azan" name="isha_azan" required>
+          </div>
+          <div class="prayer-col">
+            <label for="isha_prayer">Isha Prayer</label>
+            <input type="time" id="isha_prayer" name="isha_prayer" required>
+          </div>
+        </div>
+      </div>
+      <div class="prayer-group">
+        <h3>Friday Prayer</h3>
+        <div class="prayer-row">
+          <div class="prayer-col">
+            <label for="jummah_azan">Jummah Azan</label>
+            <input type="time" id="jummah_azan" name="jummah_azan" required>
+          </div>
+          <div class="prayer-col">
+            <label for="jummah_prayer">Jummah Prayer</label>
+            <input type="time" id="jummah_prayer" name="jummah_prayer" required>
+          </div>
+        </div>
+      </div>
+      <div class="button-group">
+        <button type="submit" class="save-btn">Save</button>
+        <button type="button" class="cancel-btn" id="cancelBtn">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <script src="{{ url_for('static', filename='time-settings.js') }}" defer></script>
+
+</body>
+</html>

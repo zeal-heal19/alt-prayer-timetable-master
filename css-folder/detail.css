@@ -1,0 +1,46 @@
+/* This is main container formating */
+.detail-container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height:55vh;
+    /* border:1px solid red; */
+    margin-top: 0.5%;
+  }
+
+  /* this is left section under main container  */
+  .detail-left-section {
+    display: inline-block;
+    flex-direction: column;
+    width: 50%;
+    /* height: 100%; */
+    /* border:1px solid royalblue; */
+    align-items: start;
+    /* border: 1px solid red; */
+  }
+  
+    /* this is left section under main container  */
+  .detail-right-section {
+    display: inline-block;
+    /* display: none; */
+    flex-direction: column;
+    width: 50%;
+    /* height: 100%; */
+    /* border:1px solid royalblue; */
+    align-items: start;
+    /* border: 1px solid red; */
+  }
+
+
+
+  /* 99names container */
+  .next-prayer-parent-container
+  {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 0%;
+    height: 58%;
+    /* border: 1px solid green; */
+  }
+

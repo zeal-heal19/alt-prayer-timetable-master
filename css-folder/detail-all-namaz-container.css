@@ -1,0 +1,130 @@
+/* Main Box */
+
+.all-namaz-time {
+  position: relative;
+  width: 80%;
+  height: 82%;
+  background: var(--all-prayer-container-background);
+  border-radius: 10px;
+  margin-left: 5%;
+  margin-top: 1%;
+  margin-right: 0;
+  padding: 2%;
+  text-align: center;
+  /* font-size: 5px; */
+  font-weight: bold;
+  /* color: var(--green-primary); */
+  /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15); */
+  overflow: hidden;
+  box-shadow: var(--all-prayer-container-box-shadow);
+  border: 1.2vw solid transparent;
+}
+
+
+/* Prayer Row Styling */
+.prayer-row {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  /* padding: 10px 30px; */
+  /* border-bottom: 1px solid #ddd; */
+}
+
+.prayer-row:last-child {
+  border-bottom: none;
+}
+
+/* Prayer Name Styling */
+.prayer-name {
+  font-size: 2.8vw;
+  font-weight: bold;
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin: 0;
+  padding-right: 25%;
+  text-align: left;
+  /* width: 100px; Fixed width to prevent resizing */
+  transition: opacity 0.5s ease-in-out;
+  display: inline-block;
+}
+
+/* Time Styling */
+.time {
+  font-size: 2.8vw;
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Jumah Time Styling */
+.prayer-name-jumah {
+  font-size: 2.8vw;
+  font-weight: bold;
+  background: linear-gradient(145deg,#dca819 0%, #dca819 100%);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin: 0;
+  padding-right: 25%;
+  text-align: left;
+  width: 100px;
+  transition: opacity 0.5s ease-in-out;
+  display: inline-block;
+}
+
+/* Time Styling */
+.time-jumah {
+  font-size: 2.8vw;
+  background: linear-gradient(145deg,#dca819 0%, #dca819 100%);;
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  font-weight: bold;
+  margin: 0;
+
+}
+
+/* Fade Effect */
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Arabic Text Styling */
+.arabic-text {
+  font-family: "Noto Naskh Arabic", sans-serif;
+  font-size: 30px;
+  direction: rtl;
+  /* Ensure proper Arabic alignment */
+}
+
+
+
+.active-prayer {
+  background: var(--next-prayer-title-color);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  /* Example: orange, change as needed */
+  font-weight: bold;
+}

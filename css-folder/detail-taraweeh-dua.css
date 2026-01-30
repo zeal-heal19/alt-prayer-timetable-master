@@ -1,0 +1,196 @@
+font-face {
+  font-family: 'Mirza-Regular';
+  src: url('..\\fonts\\Mirza-Regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'UthmanicHafs';
+  src: url('..\\fonts\\UthmanicHafs1_Ver09.woff2') format('woff2'),
+    url('..\\fonts\\UthmanicHafs1_Ver09.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ScheherazadeNew';
+  src: url('..\\fonts\\ScheherazadeNew-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+.Taraweeh-dua {
+  background: var(--all-prayer-container-background);
+  box-shadow: var(--all-prayer-container-box-shadow);
+  border: 0.7vw solid transparent;
+  width: 40%;
+  height: 114.5%;
+  display: none;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2vw;
+  line-height: 4.8vw;
+  /* 🔼 Increased line spacing */
+  color: var(--ayatul-kursi-color);
+
+  margin-top: 0.8%;
+  padding: 2%;
+  margin-left: 2%;
+  text-align: center;
+  font-family: 'Mirza-Regular';
+  font-weight: bold;
+}
+
+
+
+.Ayatal-khursi {
+
+  background: var(--all-prayer-container-background);
+  box-shadow: var(--all-prayer-container-box-shadow);
+  border: none;
+
+  /* Fullscreen styles - covers entire viewport */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+
+  display: none;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+
+  /* Smooth fade animations */
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+/* When visible - fade in */
+.Ayatal-khursi.show {
+  opacity: 1;
+}
+
+/* Ayatul Kursi image - fullscreen and centered */
+.ayatul-kursi-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Maintains aspect ratio while fitting to screen */
+
+  /* Smooth scaling animation on entrance */
+  transform: scale(0.95);
+  transition: transform 1.5s ease-in-out;
+}
+
+/* Image scales up when container is visible */
+.Ayatal-khursi.show .ayatul-kursi-image {
+  transform: scale(1);
+}
+
+/* Taraweeh Tasbeeh Fullscreen Overlay */
+.Taraweeh-fullscreen {
+  background: var(--all-prayer-container-background);
+  box-shadow: var(--all-prayer-container-box-shadow);
+  border: none;
+
+  /* Fullscreen styles - covers entire viewport */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+
+  /* Smooth fade animations */
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+/* When visible - fade in */
+.Taraweeh-fullscreen.show {
+  opacity: 1;
+}
+
+/* Taraweeh image - fullscreen and centered */
+.taraweeh-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  /* Smooth scaling animation on entrance */
+  transform: scale(0.95);
+  transition: transform 1.5s ease-in-out;
+}
+
+/* Image scales up when container is visible */
+.Taraweeh-fullscreen.show .taraweeh-image {
+  transform: scale(1);
+}
+
+.ashara-dua {
+  font-family: 'ScheherazadeNew', serif;
+  margin: 0;
+  padding: 0;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-top: 0%;
+  width: 100%;
+
+  /* border: 1px solid var(--golden); */
+  direction: rtl;
+  text-align: center;
+  font-size: 3.0vw;
+
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  /* color: #006400; */
+}
+
+
+.ashara-dua-eng {
+  padding: 0;
+  margin-top: 1%;
+  text-align: center;
+  font-size: 1.5vw;
+  background: var(--hadis-urdu-background);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+}
+
+.taraweeh-time-style {
+  font-size: 4.5vw;
+  background: var(--time-contiainer-hours-minutes);
+  background-size: 200% auto;
+  /* make gradient wider */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+  margin-top: 4%;
+  padding: 0%;
+}
